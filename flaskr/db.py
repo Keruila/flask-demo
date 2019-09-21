@@ -39,8 +39,8 @@ def close_db(e=None):
 def init_db():
     db = get_db()  # 一个数据库连接对象
 
-    with current_app.open_resource('schema.sql') as f:  # open_resource打开一个文件
-        db.executescript(f.read().decode('utf8'))
+    # with current_app.open_resource('schema.sql') as f:  # open_resource打开一个文件
+    #     db.executescript(f.read().decode('utf8'))
 
 
 # 定义一个名为 init-db 命令行，它调用 init_db 函数，并为用户显示一个成功的消息。

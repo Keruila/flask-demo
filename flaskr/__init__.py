@@ -2,9 +2,9 @@ import os
 
 from flask import Flask
 
-from flaskr import blog
 from . import db
 from . import auth
+from flask_script import Manager
 
 
 def create_app(test_config=None):
@@ -24,15 +24,14 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # @app.route('/')
-    # def hello_world():
-    #     return 'Hello World!'
+    @app.route('/')
+    def hello_world():
+        return 'Hello World!'
 
     db.init_app(app)  # app和数据库连接db 进行整合
 
     app.register_blueprint(auth.bp)  # 注册蓝图
-    app.register_blueprint(blog.bp)  # 注册蓝图
-    app.add_url_rule('/', endpoint='index')
+    # app.add_url_rule('/', endpoint='index')
 
     return app
 
